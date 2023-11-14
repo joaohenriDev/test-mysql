@@ -128,6 +128,30 @@ VALUES
 /*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
 UNLOCK TABLES;
 
+SELECT
+  cliente.id_cliente,
+  cliente.nome,
+  cliente.sobrenome,
+  cliente.data_nascimento,
+  casa.cor,
+  bairro.nome AS bairro,
+  carro.modelo
+FROM
+  cliente
+INNER JOIN
+  casa
+ON
+  cliente.id_cliente = casa.fk_cliente
+INNER JOIN
+  bairro
+ON
+  casa.fk_bairro = bairro.id_bairro
+INNER JOIN
+  carro
+ON
+  cliente.id_cliente = carro.fk_cliente
+ORDER BY
+  cliente.id_cliente
 
 
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
